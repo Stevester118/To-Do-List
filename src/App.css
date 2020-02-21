@@ -1,0 +1,87 @@
+body{
+  background-color:#5e5e5e;
+}
+.App{
+  background-color: #3f3160;
+  min-height: 500px;
+  width: 700px;
+  margin: 40px auto;
+  border-radius:50px;
+}
+.delete-btn{
+  text-align: center;
+  background: #8165c9;
+  margin-right: 10px;
+  width: 25px;
+  height: 19px;
+  border:0;
+  border-radius: 5px;
+}
+.add-btn{
+  text-align: center;
+  background: #8165c9;
+  border:0;
+  border-radius: 5px;
+  height: 50px;
+  width: 80px;
+  font-weight:bolder;
+  font-size:15px;
+  color:black;
+  box-shadow: rgb(255, 0, 34);
+}
+.app-header{
+  text-align: center;
+  font-family: "Arial Black", Gadget, sans-serif;
+  color: #a17dfc;
+  font-size: 70px;
+  margin-bottom:15px;
+}
+.container{
+  text-align: center;
+  border-radius: 25px;
+  margin:auto;
+  font-size:20px;
+}
+.input-box{
+  box-sizing:border-box;
+  background-color: #9266ff;
+  border:0;
+  width:250px;
+  height:50px;
+  font-size:18px;
+  border-radius: 10px;
+  outline:none;
+  color: #fff;
+  padding:0 0 0 20px;
+  margin-right:10px;
+}
+.input-box::placeholder{
+  color: rgb(255, 255, 255, 0.5);
+}
+.item-list{
+  list-style:none;
+  word-break: keep-all;
+  list-style-position:inside;
+  word-wrap: break-word;
+  color: #3f3160;
+  text-align: left;
+  margin-bottom:15px;
+  margin-left: 1em;
+  text-indent: -1.75em;
+  background-color: #d0bffc;
+  border-radius: 10px;
+  padding:5px 5px 5px 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.item-date{
+  margin-left: 2em;
+  text-indent: -2em;
+  font-size:12px;
+  color:black;
+}
+.list-wrapper{
+  width:600px;
+  display:inline-block;
+  padding:0px 0px 0px 0px;
+  word-break:break-all;
+}
