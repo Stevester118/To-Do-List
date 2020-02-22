@@ -66,6 +66,7 @@ class App extends React.Component {
     this.setState({ [key]: value });
   }
 
+  // adds task to task list
   addItem() {
     // object for retrieving date
     var currentDate = new Date();
@@ -100,15 +101,17 @@ class App extends React.Component {
     document.getElementById("inputBox").focus();
   }
 
+  // deletes task from task list
   deleteItem(id) {
     // copy current list of items
     const list = [...this.state.list];
     // filter out the item being deleted
     const updatedList = list.filter(item => item.id !== id);
-
+    // updates state with new list
     this.setState({ list: updatedList });
   }
 
+  // html render
   render() {
     return (
       <div className="App">
