@@ -116,7 +116,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1 className="app-header">To-Do List</h1>
-
         <div className="container">
           <form className="list-form" onSubmit={() => this.addItem()}>
             <input
@@ -126,9 +125,7 @@ class App extends React.Component {
               placeholder="Type task here"
               value={this.state.newItem}
               onChange={e => this.updateInput("newItem", e.target.value)}
-
             />
-
             <button
               className="add-btn btn-floating"
               onClick={() => this.addItem()}
@@ -136,35 +133,27 @@ class App extends React.Component {
             >
               <i className="material-icons"> + </i>
             </button>
-
             <br />
             <ul className="list-wrapper">
               {this.state.list.map(item => {
                 return (
-
                   <li className="item-list" key={item.id}>
-
                     <button className="delete-btn btn-floating"
                       onClick={() => this.deleteItem(item.id)}
                     >
                       <i className="material-icons">X</i>
                     </button>
-
                     {item.value}
                     <br />
-
                     <div className="item-date">
                       {item.date}
                     </div>
-
                   </li>
-
                 );
               })}
             </ul>
           </form>
         </div>
-
       </div>
     );
   }
