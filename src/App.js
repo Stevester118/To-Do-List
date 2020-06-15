@@ -11,54 +11,12 @@ class App extends React.Component {
     };
   }
 
-  //incorporating local storage using global state
-  componentDidMount() {
-    this.hydrateStateWithLocalStorage();
-
-    // add event listener to save state to localStorage
-    // when user leaves/refreshes the page
-    window.addEventListener(
-      "beforeunload",
-      this.saveStateToLocalStorage.bind(this)
-    );
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener(
-      "beforeunload",
-      this.saveStateToLocalStorage.bind(this)
-    );
-
-    // saves if component has a chance to unmount
-    this.saveStateToLocalStorage();
-  }
-
-  hydrateStateWithLocalStorage() {
-    // for all items in state
-    for (let key in this.state) {
-      // if the key exists in localStorage
-      if (localStorage.hasOwnProperty(key)) {
-        // get the key's value from localStorage
-        let value = localStorage.getItem(key);
-
-        // parse the localStorage string and setState
-        try {
-          value = JSON.parse(value);
-          this.setState({ [key]: value });
-        } catch (e) {
-          // handle empty string
-          this.setState({ [key]: value });
-        }
-      }
-    }
-  }
-
-  saveStateToLocalStorage() {
-    // for every item in React state
-    for (let key in this.state) {
-      // save to localStorage
-      localStorage.setItem(key, JSON.stringify(this.state[key]));
-    }
+  componentDidMount(){
+    const list = window.localStorage.getItem("list");
+    const parsedList = JSON.parse(list);
+    this.setState({
+      list: parsedList,
+    })
   }
 
   updateInput(key, value) {
@@ -83,7 +41,7 @@ class App extends React.Component {
       id: Date.now()/*1 + Math.random()*/,
       value: this.state.newItem.slice(),
       date: "Task created on: " + datetime
-
+    
     };
 
     // copy current list of items
@@ -96,6 +54,8 @@ class App extends React.Component {
     this.setState({
       list,
       newItem: ""
+    }, () => {
+      window.localStorage.setItem("list", JSON.stringify(this.state.list));
     });
     // set focus back to input box after adding a task
     document.getElementById("inputBox").focus();
@@ -108,7 +68,9 @@ class App extends React.Component {
     // filter out the item being deleted
     const updatedList = list.filter(item => item.id !== id);
     // updates state with new list
-    this.setState({ list: updatedList });
+    this.setState({ list: updatedList }, () => {
+      window.localStorage.setItem("list", JSON.stringify(this.state.list));
+    });
   }
 
   // html render
