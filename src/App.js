@@ -4,12 +4,14 @@ import './App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    
     // component state variables
     this.state = {
       newItem: "",
       list: []
     };
   }
+  
 
   componentDidMount(){
     const list = window.localStorage.getItem("list");
@@ -72,7 +74,7 @@ class App extends React.Component {
       window.localStorage.setItem("list", JSON.stringify(this.state.list));
     });
   }
-
+  
   // html render
   render() {
     return (
